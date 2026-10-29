@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+@import './styles.css';
+@import './style/sidebar.css';
+@import './style/homePage.css';
+@import './style/LoginPage.css';
+@import './style/perfilPage.css';
+@import './style/profileHeader.css';
+@import './style/gerarAtividades.css';
+@import './style/habilidadeCard.css';

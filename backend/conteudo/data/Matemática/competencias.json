@@ -1,0 +1,144 @@
+{
+  "competencias_gerais": [
+    {
+      "numero": 1,
+      "nome": "Conhecimento",
+      "descricao": "Valorizar e utilizar os conhecimentos historicamente construídos sobre o mundo físico, social, cultural e digital para entender e explicar a realidade, continuar aprendendo e colaborar para a construção de uma sociedade justa, democrática e inclusiva.",
+      "componente": "Matemática"
+    },
+    {
+      "numero": 2,
+      "nome": "Pensamento Científico, Crítico e Criativo",
+      "descricao": "Exercitar a curiosidade intelectual e recorrer à abordagem própria das ciências, incluindo a investigação, a reflexão, a análise crítica, a imaginação e a criatividade, para investigar causas, elaborar e testar hipóteses, formular e resolver problemas e criar soluções (inclusive tecnológicas) com base nos conhecimentos das diferentes áreas.",
+      "componente": "Matemática"
+    },
+    {
+      "numero": 3,
+      "nome": "Repertório Cultural",
+      "descricao": "Valorizar e fruir as diversas manifestações artísticas e culturais, das locais às mundiais, e também participar de práticas diversificadas da produção artístico-cultural.",
+      "componente": "Matemática"
+    },
+    {
+      "numero": 4,
+      "nome": "Comunicação",
+      "descricao": "Utilizar diferentes linguagens – verbal (oral ou visual-motora, como Libras, e escrita), corporal, visual, sonora e digital –, bem como conhecimentos das linguagens artística, matemática e científica, para se expressar e partilhar informações, experiências, ideias e sentimentos em diferentes contextos e produzir sentidos que levem ao entendimento mútuo.",
+      "componente": "Matemática"
+    },
+    {
+      "numero": 5,
+      "nome": "Cultura Digital",
+      "descricao": "Compreender, utilizar e criar tecnologias digitais de informação e comunicação de forma crítica, significativa, reflexiva e ética nas diversas práticas sociais (incluindo as escolares) para se comunicar, acessar e disseminar informações, produzir conhecimentos, resolver problemas e exercer protagonismo e autoria na vida pessoal e coletiva.",
+      "componente": "Matemática"
+    },
+    {
+      "numero": 6,
+      "nome": "Trabalho e Projeto de Vida",
+      "descricao": "Valorizar a diversidade de saberes e vivências culturais e apropriar-se de conhecimentos e experiências que lhe possibilitem entender as relações próprias do mundo do trabalho e fazer escolhas alinhadas ao exercício da cidadania e ao seu projeto de vida, com liberdade, autonomia, consciência crítica e responsabilidade.",
+      "componente": "Matemática"
+    },
+    {
+      "numero": 7,
+      "nome": "Argumentação",
+      "descricao": "Argumentar com base em fatos, dados e informações confiáveis, para formular, negociar e defender ideias, pontos de vista e decisões comuns que respeitem e promovam os direitos humanos, a consciência socioambiental e o consumo responsável em âmbito local, regional e global, com posicionamento ético em relação ao cuidado de si mesmo, dos outros e do planeta.",
+      "componente": "Matemática"
+    },
+    {
+      "numero": 8,
+      "nome": "Autoconhecimento e Autocuidado",
+      "descricao": "Conhecer-se, apreciar-se e cuidar de sua saúde física e emocional, compreendendo-se na diversidade humana e reconhecendo suas emoções e as dos outros, com autocrítica e capacidade para lidar com elas.",
+      "componente": "Matemática"
+    },
+    {
+      "numero": 9,
+      "nome": "Empatia e Cooperação",
+      "descricao": "Exercitar a empatia, o diálogo, a resolução de conflitos e a cooperação, fazendo-se respeitar e promovendo o respeito ao outro e aos direitos humanos, com acolhimento e valorização da diversidade de indivíduos e de grupos sociais, seus saberes, identidades, culturas e potencialidades, sem preconceitos de qualquer natureza.",
+      "componente": "Matemática"
+    },
+    {
+      "numero": 10,
+      "nome": "Responsabilidade e Cidadania",
+      "descricao": "Agir pessoal e coletivamente com autonomia, responsabilidade, flexibilidade, resiliência e determinação, tomando decisões com base em princípios éticos, democráticos, inclusivos, sustentáveis e solidários.",
+      "componente": "Matemática"
+    }
+  ],
+  "competencias_especificas": [
+    {
+      "numero": 1,
+      "descricao": "Reconhecer que a Matemática é uma ciência humana, fruto das necessidades e preocupações de diferentes culturas, em diferentes momentos históricos, e é uma ciência viva, que contribui para solucionar problemas científicos e tecnológicos e para alicerçar descobertas e construções, inclusive com impactos no mundo do trabalho.",
+      "componete": "Matemática",
+      "nivel_ensino": "Fundamental"
+    },
+    {
+      "numero": 2,
+      "descricao": "Desenvolver o raciocínio lógico, o espírito de investigação e a capacidade de produzir argumentos convincentes, recorrendo aos conhecimentos matemáticos para compreender e atuar no mundo.",
+      "componete": "Matemática",
+      "nivel_ensino": "Fundamental"
+    },
+    {
+      "numero": 3,
+      "descricao": "Compreender as relações entre conceitos e procedimentos dos diferentes campos da Matemática (Aritmética, Álgebra, Geometria, Estatística e Probabilidade) e de outras áreas do conhecimento, sentindo segurança quanto à própria capacidade de construir e aplicar conhecimentos matemáticos, desenvolvendo a autoestima e a perseverança na busca de soluções.",
+      "componete": "Matemática",
+      "nivel_ensino": "Fundamental"
+    },
+    {
+      "numero": 4,
+      "descricao": "Fazer observações sistemáticas de aspectos quantitativos e qualitativos presentes nas práticas sociais e culturais, de modo a investigar, organizar, representar e comunicar informações relevantes, para interpretá-las e avaliá-las crítica e eticamente, produzindo argumentos convincentes.",
+      "componete": "Matemática",
+      "nivel_ensino": "Fundamental"
+    },
+    {
+      "numero": 5,
+      "descricao": "Utilizar processos e ferramentas matemáticas, inclusive tecnologias digitais disponíveis, para modelar e resolver problemas cotidianos, sociais e de outras áreas de conhecimento, validando estratégias e resultados.",
+      "componete": "Matemática",
+      "nivel_ensino": "Fundamental"
+    },
+    {
+      "numero": 6,
+      "descricao": "Enfrentar situações-problema em múltiplos contextos, incluindo-se situações imaginadas, não diretamente relacionadas com o aspecto prático-utilitário, expressar suas respostas e sintetizar conclusões, utilizando diferentes registros e linguagens (gráficos, tabelas, esquemas, além de texto escrito na língua materna e outras linguagens para descrever algoritmos, como fluxogramas e dados).",
+      "componete": "Matemática",
+      "nivel_ensino": "Fundamental"
+    },
+    {
+      "numero": 7,
+      "descricao": "Desenvolver e/ou discutir projetos que abordem, sobretudo, questões de urgência social, com base em princípios éticos, democráticos, sustentáveis e solidários, valorizando a diversidade de opiniões de indivíduos e de grupos sociais, sem preconceitos de qualquer natureza.",
+      "componete": "Matemática",
+      "nivel_ensino": "Fundamental"
+    },
+    {
+      "numero": 8,
+      "descricao": "Interagir com seus pares de forma cooperativa, trabalhando coletivamente no planejamento e desenvolvimento de pesquisas para responder a questionamentos e na busca de soluções para problemas, de modo a identificar aspectos consensuais ou não na discussão de uma determinada questão, respeitando o modo de pensar dos colegas e aprendendo com eles.",
+      "componete": "Matemática",
+      "nivel_ensino": "Fundamental"
+    },
+    {
+      "numero": 1,
+      "descricao": "Utilizar estratégias, conceitos e procedimentos matemáticos para interpretar situações em diversos contextos, sejam atividades cotidianas, sejam fatos das Ciências da Natureza e Humanas, das questões socioeconômicas ou tecnológicas, divulgados por diferentes meios, de modo a contribuir para uma formação geral.",
+      "componete": "Matemática",
+      "nivel_ensino": "Médio"
+    },
+    {
+      "numero": 2,
+      "descricao": "Propor ou participar de ações para investigar desafios do mundo contemporâneo e tomar decisões éticas e socialmente responsáveis, com base na análise de problemas sociais, como os voltados a situações de saúde, sustentabilidade, das implicações da tecnologia no mundo do trabalho, entre outros, mobilizando e articulando conceitos, procedimentos e linguagens próprias da Matemática.",
+      "componete": "Matemática",
+      "nivel_ensino": "Médio"
+    },
+    {
+      "numero": 3,
+      "descricao": "Utilizar estratégias, conceitos, definições e procedimentos matemáticos para interpretar, construir modelos e resolver problemas em diversos contextos, analisando a plausibilidade dos resultados e a adequação das soluções propostas, de modo a construir argumentação consistente.",
+      "componete": "Matemática",
+      "nivel_ensino": "Médio"
+    },
+    {
+      "numero": 4,
+      "descricao": "Compreender e utilizar, com flexibilidade e precisão, diferentes registros de representação matemáticos (algébrico, geométrico, estatístico, computacional etc.), na busca de solução e comunicação de resultados de problemas.",
+      "componete": "Matemática",
+      "nivel_ensino": "Médio"
+    },
+    {
+      "numero": 5,
+      "descricao": "Investigar e estabelecer conjecturas a respeito de diferentes conceitos e propriedades matemáticas, empregando estratégias e recursos, como observação de padrões, experimentações e diferentes tecnologias, identificando a necessidade, ou não, de uma demonstração cada vez mais formal na validação das referidas conjecturas.",
+      "componete": "Matemática",
+      "nivel_ensino": "Médio"
+    }
+  ]
+}

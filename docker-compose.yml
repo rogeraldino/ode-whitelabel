@@ -1,0 +1,134 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:17.5
+    container_name: backend_db
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - pgdata_backend:/var/lib/postgresql/data
+      - ./docker_pg_config/pg_hba.conf:/etc/postgresql/pg_hba.conf:ro
+      - ./docker_pg_config/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+    networks:
+      - backend_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - backend_network
+
+  backend:
+    build: ./backend
+    container_name: django_backend_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    networks:
+      - backend_network
+    depends_on:
+      - db
+      - redis
+    command: >
+      gunicorn
+      -k uvicorn.workers.UvicornWorker
+      --bind 0.0.0.0:8000
+      --workers 4
+      --threads 1
+      --timeout 150
+      --graceful-timeout 30
+      education_backend.asgi:application
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8000/health || exit 1"]
+      interval: 15s
+      timeout: 3s
+      retries: 5
+
+  worker:
+    build: ./backend
+    container_name: celery_worker
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+    # Pool de threads para I/O (OpenAI), mais vazão por espera de rede
+    command: >
+      celery -A education_backend worker
+      -Q llm_atividades,llm_planos,llm_resumos
+      -P threads
+      --concurrency=32
+      --prefetch-multiplier=8
+      --max-tasks-per-child=500
+      --loglevel=INFO
+    networks:
+      - backend_network
+
+  beat:
+    build: ./backend
+    container_name: celery_beat
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - redis
+    command: >
+      celery -A education_backend beat
+      --loglevel=INFO
+    networks:
+      - backend_network
+
+  frontend:
+    build: ./frontend
+    container_name: react_frontend_app
+    restart: unless-stopped
+    volumes:
+      - ./frontend/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - backend_network
+    depends_on:
+      - backend
+
+  loki:
+    image: grafana/loki:2.9.0
+    container_name: loki
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - ./loki-data:/tmp
+    networks:
+      - backend_network
+
+  grafana:
+    image: grafana/grafana:10.4.3
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:?Set GRAFANA_ADMIN_PASSWORD in the environment}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - loki
+    networks:
+      - backend_network
+    volumes:
+      - ~/grafana-data:/var/lib/grafana
+
+volumes:
+  pgdata_backend:
+
+networks:
+  backend_network:
+    driver: bridge

@@ -1,0 +1,188 @@
+/* BottomNav — Mobile (<=640px) + Tablet (641–1024px); oculto no Desktop (>=1025px)
+   Unificado a partir dos dois arquivos; removidas duplicações e conflitos.
+*/
+
+:root{
+    /* usa seus tokens globais */
+    /* --app-orange já existe; --orange-50 deve existir. se não, defina: #FFF5E7 */
+}
+
+/* ===== Base (desktop: escondido por padrão) ===== */
+.bottom-nav{
+    display: none;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: 64px;
+    background: #fff;
+    border-top: 1.5px solid var(--gray-200);
+    box-shadow: 0 -2px 16px rgba(98, 127, 244, 0.10);
+    z-index: 10; /* seguro; abaixo de modais/overlays mais altos */
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 2px;
+    transition: box-shadow .18s, background .18s;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.bottom-nav__link{
+    position: relative;
+    flex: 1;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: .72rem;
+    color: var(--gray-600);
+    padding: .5rem .2rem;
+    border-radius: 10px;
+    margin: 0 .18rem;
+    min-width: 48px;
+    min-height: 48px;
+    outline: none;
+    transition: background .18s, color .18s, box-shadow .18s, transform .12s;
+    white-space: nowrap;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.bottom-nav__icon{
+    width: 26px;
+    height: 26px;
+    margin-bottom: 2px;
+    stroke: currentColor;
+    border-radius: 50%;
+    background: transparent;
+    transition: background .18s, color .18s, box-shadow .18s, transform .12s;
+}
+
+.bottom-nav__label{
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .01em;
+}
+
+.bottom-nav__link:hover,
+.bottom-nav__link:focus{
+    color: var(--app-orange);
+    background: var(--orange-50);
+    box-shadow: 0 2px 8px rgba(246, 149, 67, 0.10);
+}
+.bottom-nav__link:focus-visible{
+    outline: 2px solid var(--app-orange);
+    outline-offset: 2px;
+}
+.bottom-nav__link:active{ transform: scale(.98); }
+
+/* Estado ativo padronizado */
+.bottom-nav__link--active{
+    color: var(--app-orange);
+    font-weight: 700;
+    background: var(--orange-50);
+    box-shadow: 0 2px 12px rgba(246, 149, 67, 0.13);
+}
+.bottom-nav__link--active .bottom-nav__icon{
+    background: var(--orange-50);
+    color: var(--app-orange);
+    box-shadow: 0 2px 8px rgba(246, 149, 67, 0.10);
+    transform: translateY(-1px);
+}
+
+/* Desabilitado */
+.bottom-nav__link--disabled{
+    color: var(--gray-400);
+    pointer-events: none;
+    opacity: .7;
+}
+.bottom-nav__link--disabled .bottom-nav__icon{ color: var(--gray-400); }
+
+.bottom-nav__lock-icon{
+    position: absolute;
+    top: 4px; right: 8px;
+    color: var(--gray-400);
+    width: 12px; height: 12px;
+}
+
+/* Botão "Mais" usa o mesmo estilo de link */
+.bottom-nav__link--more{}
+
+/* ===== Breakpoints oficiais ===== */
+
+/* Mobile + Tablet (<=1024px): mostrar bottom-nav e dar espaço no conteúdo */
+@media (max-width: 1024px){
+    .bottom-nav{ display: flex !important; }
+
+    /* Prev de sobreposição do conteúdo */
+    .layout__content{
+        padding-bottom: 64px; /* altura do bottom-nav */
+    }
+}
+
+/* Mobile (<=640px): alvos levemente menores */
+@media (max-width: 640px){
+    .bottom-nav{ height: 60px; }
+    .bottom-nav__link{
+        min-height: 44px;
+        padding: .375rem .125rem;
+        margin: 0 .0625rem;
+    }
+    .bottom-nav__icon{
+        width: 22px; height: 22px; margin-bottom: .2rem;
+    }
+    .bottom-nav__label{
+        font-size: .7rem; line-height: 1.1;
+    }
+    .bottom-nav__lock-icon{
+        top: 1px; right: 3px; width: 10px; height: 10px;
+    }
+    .layout__content{ padding-bottom: 60px; }
+}
+
+/* Tablet (641–1024px) */
+@media (min-width: 641px) and (max-width: 1024px){
+    .bottom-nav{ height: 64px; }
+    .bottom-nav__icon{ width: 24px; height: 24px; margin-bottom: .25rem; }
+    .bottom-nav__label{ font-size: .75rem; line-height: 1.2; }
+}
+
+/* Mobile muito pequeno (<=360px) */
+@media (max-width: 360px){
+    .bottom-nav{ height: 56px; }
+    .bottom-nav__link{ min-height: 40px; padding: .25rem .125rem; }
+    .bottom-nav__icon{ width: 20px; height: 20px; margin-bottom: .15rem; }
+    .bottom-nav__label{ font-size: .65rem; line-height: 1.1; }
+    .bottom-nav__lock-icon{ top: 0; right: 2px; width: 8px; height: 8px; }
+    .layout__content{ padding-bottom: 56px; }
+}
+
+/* Desktop (>=1025px): esconder bottom-nav */
+@media (min-width: 1025px){
+    .bottom-nav{ display: none !important; }
+}
+
+/* Preferências do usuário */
+@media (prefers-reduced-motion: reduce){
+    .bottom-nav__link, .bottom-nav__icon{
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* Alta densidade */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){
+    .bottom-nav{ border-top-width: .5px; }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi){
+    .bottom-nav__icon{ stroke-width: 1.5; }
+}
+
+/* Safe area (iPhones) */
+@supports (padding: max(0px)){
+    .bottom-nav{
+        padding-bottom: max(env(safe-area-inset-bottom), 0) !important;
+    }
+}

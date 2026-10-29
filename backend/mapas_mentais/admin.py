@@ -1,0 +1,1 @@
+# admin.py para o app mapas_mentais 

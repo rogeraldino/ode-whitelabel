@@ -1,0 +1,68 @@
+# ------------------
+# Python / Django
+# ------------------
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.env
+*.env-worker
+.env.*
+
+
+# ------------------
+# Node.js / React
+# ------------------
+node_modules/
+.vite/
+dist/
+build/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# Evita pacotes binários específicos de SO
+**/node_modules/*-linux-*
+**/node_modules/*-win32-*
+**/node_modules/*-darwin-*
+
+# ------------------
+# VSCode
+# ------------------
+.vscode/
+
+# ------------------
+# IntelliJ IDEA
+# ------------------
+.idea/
+
+# ------------------
+# Sistema
+# ------------------
+.DS_Store
+Thumbs.db
+
+# ------------------
+# Testes / Coverage
+# ------------------
+coverage/
+htmlcov/
+*.cover
+*.py,cover
+.cache
+.tox/
+nosetests.xml
+coverage.xml
+*.coveragerc
+
+# ------------------
+# Migrations (se quiser ignorar do versionamento inicial)
+# ------------------
+**/migrations/
+!*/migrations/__init__.py
+
+.venv/

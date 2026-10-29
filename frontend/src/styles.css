@@ -1,0 +1,866 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+/* src/styles.css */
+
+/* 1) Variáveis de Tema */
+:root {
+  /* Cores principais */
+  --app-blue: #021D40;
+  --app-orange: #F69543;
+  --app-peach: #F29E6D;
+  --app-white: #FFFFFF; /* Branco puro */
+  --app-black: #0D0D0D;
+  --app-yellow: #FFB848;
+  --app-light-gray: #F2F2F2; /* Novo cinza claro para o fundo principal */
+
+  /* Tons de cinza */
+  --gray-50: #F9FAFB;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+  --gray-500: #6B7280;
+  --gray-600: #4B5563;
+  --gray-700: #374151;
+  --gray-800: #1F2937;
+  --gray-900: #111827;
+
+  /* Cores do tema laranja */
+  --orange-50: #fff5e7;
+  --orange-600: #f77100;
+
+  /* Alertas (safelist) */
+  --green-400:  #68d391;
+  --yellow-400: #f6e05e;
+  --red-400:    #fc8181;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Layout */
+  --header-height: 56px;
+  --bottom-nav-height: 64px;
+  --sidebar-width: 16rem;
+  --sidebar-collapsed-width: 4.5rem;
+
+  /* Tipografia */
+  --font-family: 'Quicksand', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  /* Espaçamento */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+
+  /* Bordas */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.375rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 0.75rem;
+  --border-radius-2xl: 1rem;
+  --border-radius-3xl: 1.5rem;
+}
+
+/* 2) Reset e Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--app-black);
+  background-color: var(--app-light-gray); /* Usar o novo cinza claro para o fundo */
+  line-height: 1.5;
+}
+
+/* 3) Utilitários básicos */
+.flex          { display: flex; }
+.flex-col      { flex-direction: column; }
+.items-center  { align-items: center; }
+.justify-center{ justify-content: center; }
+.justify-between { justify-content: space-between; }
+.relative      { position: relative; }
+.hidden        { display: none; }
+.rounded       { border-radius: 0.25rem; }
+.rounded-md    { border-radius: 0.375rem; }
+.rounded-lg    { border-radius: 0.5rem; }
+.rounded-xl    { border-radius: 0.75rem; }
+.rounded-2xl   { border-radius: 1rem; }
+.rounded-3xl   { border-radius: 1.5rem; }
+.p-1           { padding: 0.25rem; }
+.p-2           { padding: 0.5rem; }
+.p-3           { padding: 0.75rem; }
+.p-4           { padding: 1rem; }
+.p-5           { padding: 1.25rem; }
+.p-6           { padding: 1.5rem; }
+.px-4          { padding-left: 1rem; padding-right: 1rem; }
+.py-4          { padding-top: 1rem; padding-bottom: 1rem; }
+.mx-auto       { margin-left: auto; margin-right: auto; }
+.mb-1          { margin-bottom: 0.25rem; }
+.mb-2          { margin-bottom: 0.5rem; }
+.mb-4          { margin-bottom: 1rem; }
+.mb-6          { margin-bottom: 1.5rem; }
+.mb-10         { margin-bottom: 2.5rem; }
+.mt-2          { margin-top: 0.5rem; }
+.mt-4          { margin-top: 1rem; }
+.mt-6          { margin-top: 1.5rem; }
+.gap-1         { gap: 0.25rem; }
+.gap-2         { gap: 0.5rem; }
+.gap-3         { gap: 0.75rem; }
+.gap-4         { gap: 1rem; }
+.gap-5         { gap: 1.25rem; }
+.gap-6         { gap: 1.5rem; }
+.space-y-2 > * + * { margin-top: 0.5rem; }
+.space-y-6 > * + * { margin-top: 1.5rem; }
+.grid          { display: grid; }
+.grid-cols-2   { grid-template-columns: repeat(2, 1fr); }
+.sm\:grid-cols-4 { /* via media query */ }
+@media (min-width: 640px) {
+  .sm\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+}
+.max-w-4xl     { max-width: 56rem; }
+.max-w-5xl     { max-width: 64rem; }
+.w-full        { width: 100%; }
+.overflow-hidden { overflow: hidden; }
+.text-center   { text-align: center; }
+.text-xs       { font-size: var(--font-size-xs); }
+.text-sm       { font-size: var(--font-size-sm); }
+.text-base     { font-size: var(--font-size-base); }
+.text-lg       { font-size: var(--font-size-lg); }
+.text-xl       { font-size: var(--font-size-xl); }
+.text-2xl      { font-size: var(--font-size-2xl); }
+.text-3xl      { font-size: var(--font-size-3xl); }
+.text-4xl      { font-size: var(--font-size-4xl); }
+.font-normal   { font-weight: 400; }
+.font-medium   { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold     { font-weight: 700; }
+.no-underline  { text-decoration: none; }
+
+/* 4) Sombreamentos e bordas */
+.shadow-sm     { box-shadow: var(--shadow-sm); }
+.shadow-md     { box-shadow: var(--shadow-md); }
+.shadow-lg     { box-shadow: var(--shadow-lg); }
+.border        { border: 1px solid var(--gray-200); }
+.border-b      { border-bottom: 1px solid var(--gray-200); }
+.border-t      { border-top:    1px solid var(--gray-200); }
+
+/* 5) Cores de texto e fundo */
+.text-blue       { color: var(--app-blue); }
+.text-orange     { color: var(--app-orange); }
+.text-peach       { color: var(--app-peach); }
+.text-yellow      { color: var(--app-yellow); }
+.text-white       { color: var(--app-white); }
+.text-black       { color: var(--app-black); }
+.text-gray-600    { color: var(--gray-600); }
+.text-gray-700    { color: var(--gray-700); }
+.text-gray-800    { color: var(--gray-800); }
+.text-gray-900    { color: var(--gray-900); }
+.text-blue-600    { color: #2563eb; }
+.text-orange-600  { color: var(--app-orange); }
+.text-peach-600   { color: var(--app-peach); }
+.text-yellow-600  { color: var(--app-yellow); }
+
+.bg-blue          { background-color: var(--app-blue); }
+.bg-orange        { background-color: var(--app-orange); }
+.bg-peach         { background-color: var(--app-peach); }
+.bg-yellow        { background-color: var(--app-yellow); }
+.bg-white         { background-color: var(--app-white); }
+.bg-black         { background-color: var(--app-black); }
+.bg-gray-50       { background: var(--gray-50); }
+.bg-gray-100      { background: var(--gray-100); }
+.bg-gray-200      { background: var(--gray-200); }
+.bg-gray-300      { background: var(--gray-300); }
+.bg-gray-600      { background: var(--gray-600); }
+.bg-gray-700      { background: var(--gray-700); }
+.bg-gray-900      { background: var(--gray-900); }
+.bg-green-400     { background: var(--green-400); }
+.bg-yellow-400    { background: var(--yellow-400); }
+.bg-red-400        { background: var(--red-400); }
+
+/* 6) Hover states */
+.hover-blue:hover       { color: var(--app-blue); }
+.hover-orange:hover      { color: var(--app-orange); }
+.hover-peach:hover       { color: var(--app-peach); }
+.hover-yellow:hover      { color: var(--app-yellow); }
+.hover-bg-blue:hover      { background-color: var(--app-blue); }
+.hover-bg-orange:hover     { background-color: var(--app-orange); }
+.hover-bg-peach:hover      { background-color: var(--app-peach); }
+.hover-bg-yellow:hover     { background-color: var(--app-yellow); }
+.link-history:hover       { text-decoration: underline; }
+
+/* 7) Layout Base */
+.layout {
+  display: flex;
+  min-height: 100svh;
+  min-height: 100dvh;
+}
+
+/* 8) Componentes Globais */
+.btn-primary {
+  display: inline-flex;
+    align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #3B71F8;
+  color: var(--app-white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background: #2563EB;
+  color: var(--app-white);
+}
+
+/* 9) Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 10) Acessibilidade */
+.focus-ring {
+  outline: none;
+}
+
+.focus-ring:focus {
+  outline: 2px solid var(--app-orange);
+  outline-offset: 2px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop {
+    display: none;
+  }
+}
+
+/* ===== RESPONSIVIDADE GLOBAL MOBILE ===== */
+@media (max-width: 768px) {
+  /* Prevenir overflow horizontal */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Ajustar fontes base para mobile */
+  body {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  /* Melhorar área de toque em botões */
+  button, 
+  input[type="button"], 
+  input[type="submit"], 
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Prevenir zoom em inputs no iOS */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Reduzir margens em telas pequenas */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Ajustar espaçamentos */
+  .container,
+  .main-content,
+  .content-wrapper {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Melhorar legibilidade */
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.1rem; }
+  h4 { font-size: 1rem; }
+  h5 { font-size: 0.9rem; }
+  h6 { font-size: 0.85rem; }
+  
+  /* Ajustar botões para telas pequenas */
+  .btn {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .btn-sm {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Ajustes para telas muito pequenas */
+  body {
+    font-size: 0.85rem;
+  }
+  
+  .container,
+  .main-content,
+  .content-wrapper {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  
+  /* Reduzir ainda mais os tamanhos de fonte */
+  h1 { font-size: 1.25rem; }
+  h2 { font-size: 1.1rem; }
+  h3 { font-size: 1rem; }
+  h4 { font-size: 0.9rem; }
+  
+  /* Botões menores para telas muito pequenas */
+  .btn {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.9rem;
+    min-height: 40px;
+  }
+}
+
+/* ===== UTILITÁRIOS RESPONSIVOS ===== */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+  
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-full-width {
+    width: 100% !important;
+  }
+  
+  .mobile-text-center {
+    text-align: center !important;
+  }
+  
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+  
+  /* Melhorias gerais para mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Garantir que inputs e botões tenham tamanho mínimo para touch */
+  input, textarea, select, button, .btn {
+    font-size: 16px !important; /* Evita zoom no iOS */
+  }
+  
+  /* Melhorar espaçamento em mobile */
+  .container, .main-content, .content-wrapper {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Ajustar cards para mobile */
+  .card, .card--tool {
+    margin: 0.5rem 0 !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  /* Melhorar navegação em mobile */
+  .nav-link, .sidebar__item {
+    min-height: 48px !important;
+    padding: 0.75rem 1rem !important;
+  }
+  
+  /* Ajustar formulários para mobile */
+  .form-group, .input-group {
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Melhorar botões em mobile */
+  .btn-primary, .btn-secondary {
+    width: 100% !important;
+    margin: 0.5rem 0 !important;
+    padding: 0.875rem 1rem !important;
+    font-size: 1rem !important;
+    border-radius: 0.5rem !important;
+  }
+  
+  /* Ajustar grids para mobile */
+  .grid, .activity-list--grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  /* Melhorar modais em mobile */
+  .modal, .modal-content {
+    margin: 1rem !important;
+    max-width: calc(100vw - 2rem) !important;
+    max-height: calc(100svh - 2rem) !important;
+    max-height: calc(100dvh - 2rem) !important;
+  }
+  
+  /* Ajustar tabelas para mobile */
+  table {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Melhorar tooltips e dropdowns */
+  .tooltip, .dropdown-menu {
+    max-width: calc(100vw - 2rem) !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Reduzir margens em telas pequenas */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Ajustar espaçamentos */
+  .container,
+  .main-content,
+  .content-wrapper {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  /* Melhorar legibilidade */
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1.1rem !important; }
+  h4 { font-size: 1rem !important; }
+  h5 { font-size: 0.9rem !important; }
+  h6 { font-size: 0.85rem !important; }
+  
+  /* Ajustar botões para telas pequenas */
+  .btn {
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+    border-radius: 0.5rem !important;
+  }
+  
+  .btn-sm {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Melhorar cards em telas pequenas */
+  .card {
+    margin: 0.25rem 0 !important;
+    padding: 1rem !important;
+  }
+  
+  /* Ajustar inputs em telas pequenas */
+  input, textarea, select {
+    padding: 0.75rem !important;
+    font-size: 16px !important;
+  }
+  
+  /* Melhorar espaçamento entre elementos */
+  .form-group + .form-group,
+  .card + .card {
+    margin-top: 1rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Ajustes para telas muito pequenas */
+  body {
+    font-size: 0.85rem !important;
+  }
+  
+  .container,
+  .main-content,
+  .content-wrapper {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+  
+  /* Reduzir ainda mais os tamanhos de fonte */
+  h1 { font-size: 1.25rem !important; }
+  h2 { font-size: 1.1rem !important; }
+  h3 { font-size: 1rem !important; }
+  h4 { font-size: 0.9rem !important; }
+  
+  /* Botões menores para telas muito pequenas */
+  .btn {
+    padding: 0.625rem 0.75rem !important;
+    font-size: 0.9rem !important;
+    min-height: 40px !important;
+  }
+  
+  /* Ajustar cards para telas muito pequenas */
+  .card {
+    padding: 0.75rem !important;
+    margin: 0.25rem 0 !important;
+  }
+  
+  /* Melhorar inputs para telas muito pequenas */
+  input, textarea, select {
+    padding: 0.625rem !important;
+    font-size: 16px !important;
+  }
+}
+
+/* ===== MELHORIAS ESPECÍFICAS PARA COMPONENTES ===== */
+
+/* Melhorar ProfileHeader em mobile */
+@media (max-width: 768px) {
+  .profile-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    height: 48px !important;
+  }
+  
+  .profile-header__container {
+    padding: 0 1rem !important;
+  }
+  
+  .profile-header__logo-img {
+    height: 28px !important;
+  }
+  
+  .profile-header__greeting-text {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Melhorar Sidebar em mobile */
+@media (max-width: 1023px) {
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 280px !important;
+    height: 100svh !important;
+    height: 100dvh !important;
+    z-index: 1300 !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  .sidebar--open {
+    transform: translateX(0) !important;
+  }
+  
+  .sidebar__overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    height: 100dvh !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 1200 !important;
+    /* Oculto por padrão; habilitado via .is-visible */
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .sidebar__overlay.is-visible {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* Melhorar BottomNav em mobile */
+@media (max-width: 767px) {
+  .bottom-nav {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 64px !important;
+    z-index: 1000 !important;
+    background: #fff !important;
+    border-top: 1px solid var(--gray-200) !important;
+    padding-bottom: env(safe-area-inset-bottom, 0) !important;
+  }
+  
+  .bottom-nav__link {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+    padding: 0.5rem 0.25rem !important;
+  }
+  
+  .bottom-nav__link span {
+    font-size: 0.75rem !important;
+    margin-top: 0.25rem !important;
+  }
+}
+
+/* Melhorar formulários em mobile */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1rem !important;
+  }
+  
+  .form-row {
+    flex-direction: column !important;
+  }
+  
+  .form-col {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .form-actions {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  .form-actions .btn {
+    width: 100% !important;
+  }
+}
+
+/* Melhorar tabelas em mobile */
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  .table {
+    min-width: 600px !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.5rem 0.75rem !important;
+  }
+}
+
+/* Melhorar modais em mobile */
+@media (max-width: 768px) {
+  .modal-dialog {
+    margin: 1rem !important;
+    max-width: calc(100vw - 2rem) !important;
+  }
+  
+  .modal-content {
+    border-radius: 0.75rem !important;
+  }
+  
+  .modal-header {
+    padding: 1rem !important;
+  }
+  
+  .modal-body {
+    padding: 1rem !important;
+  }
+  
+  .modal-footer {
+    padding: 1rem !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  
+  .modal-footer .btn {
+    width: 100% !important;
+  }
+}
+
+/* Melhorar tooltips e dropdowns em mobile */
+@media (max-width: 768px) {
+  .tooltip,
+  .dropdown-menu,
+  .popover {
+    max-width: calc(100vw - 2rem) !important;
+    font-size: 0.875rem !important;
+    z-index: 1100 !important;
+  }
+  
+  .dropdown-menu {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 64px !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    transform: none !important;
+  }
+}
+
+/* Melhorar scroll em mobile */
+@media (max-width: 768px) {
+  .scroll-container {
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: smooth !important;
+  }
+  
+  /* Melhorar scroll para elementos específicos */
+  .activity-list,
+  .form-container,
+  .modal-body {
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* Melhorar animações em mobile */
+@media (max-width: 768px) {
+  /* Reduzir animações em dispositivos com preferência por movimento reduzido */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Otimizar transições para mobile */
+  .transition-mobile {
+    transition: all 0.2s ease !important;
+  }
+}
+
+/* Melhorar acessibilidade em mobile */
+@media (max-width: 768px) {
+  /* Garantir que elementos focáveis tenham tamanho mínimo */
+  button, a, input, textarea, select, [tabindex] {
+    min-width: 44px !important;
+  }
+  
+  /* Melhorar contraste para elementos pequenos */
+  .text-small {
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+  }
+}
+
+/* Melhorar performance em mobile */
+@media (max-width: 768px) {
+  /* Otimizar para dispositivos com menos recursos */
+  .optimize-mobile {
+    will-change: auto !important;
+    transform: none !important;
+  }
+  
+  /* Reduzir sombras em mobile para melhor performance */
+  .card,
+  .btn,
+  .modal-content {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* === Anti-dança: viewport seguro & correções pontuais === */
+
+/* 1) Utilitários e layout: usar viewport dinâmico */
+.h-screen       { height: 100svh; height: 100dvh; }
+.min-h-screen   { min-height: 100svh; min-height: 100dvh; }
+
+/* 2) Sidebar (mobile/tablet): altura estável ao teclado/UI do browser */
+@media (max-width: 1023px) {
+  .sidebar { height: 100svh !important; height: 100dvh !important; }
+}
+
+/* 3) Modais (mobile): limite por dvh em vez de vh */
+@media (max-width: 768px) {
+  .modal,
+  .modal-content {
+    max-height: calc(100dvh - 2rem) !important;
+  }
+}
+
+/* 4) Refinar max-width global: remova a estrela, aplique só em mídias geradoras de overflow */
+@media (max-width: 768px) {
+  /* Neutraliza qualquer * { max-width: 100vw } anterior */
+  * { max-width: none; }
+
+  /* Aplique corretamente a mídias e blocos que realmente precisam */
+  img, video, canvas, svg, iframe, pre, code {
+    max-width: 100% !important;
+    overflow-x: auto;
+  }
+
+  /* Containers principais continuam protegidos de overflow horizontal */
+  .container, .main-content, .content-wrapper, .card, .form-container {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+}
+
+/* 5) Acessibilidade sem efeito colateral:
+      remova o padding global em <a> e exponha utilitário opt-in. */
+@media (max-width: 768px) {
+  a { padding: 0 !important; } /* neutraliza a regra global */
+  /* Use esta classe onde você realmente quer ampliar a área de toque */
+  .tap-area { padding: 0.5rem !important; display: inline-flex; align-items: center; }
+}

@@ -1,0 +1,100 @@
+/* habilidadeCard.css */
+
+/* Contêiner flexível para os cards de habilidade */
+.habilidade-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem; /* Espaçamento ajustado entre os cards */
+    margin-top: 0.25rem; /* Margem superior mínima para aproximar do campo */
+}
+
+/* Garante que a margem superior não apareça se não houver cards */
+.habilidade-info:empty {
+    margin-top: 0;
+}
+
+/* Estilo individual do card de habilidade */
+.habilidade-card {
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    flex-basis: 350px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.habilidade-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #d1d5db;
+}
+
+/* Detalhes da habilidade dentro do card */
+.habilidade-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaçamento ajustado para os parágrafos de detalhes */
+}
+
+.habilidade-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #374151;
+    line-height: 1.5;
+    padding: 0.5rem 0;
+}
+
+.habilidade-card strong {
+    font-weight: 600;
+    margin-right: 0.25rem;
+    color: #1f2937;
+}
+
+/* Código BNCC da habilidade */
+.habilidade-card__codigo {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e40af;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Botão de remoção da habilidade */
+.remove-habilidade-btn {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+    background: #f3f4f6;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: all 0.2s ease;
+    padding: 0.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    z-index: 10;
+}
+
+.remove-habilidade-btn:hover {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.remove-habilidade-btn:active {
+    transform: scale(0.9);
+}

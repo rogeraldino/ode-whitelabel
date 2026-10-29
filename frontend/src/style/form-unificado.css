@@ -1,0 +1,176 @@
+/* Formulário Unificado — aplica o padrão do Plano de Aula
+   aos forms de Gerar Atividades e Resumo
+*/
+
+/* ===== Wrapper de form (mesmo padrão do pa-form) ===== */
+.page--resumo .pa-form {
+  padding: 0;
+  gap: .5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Alinhar o espaçamento do form de Gerar Atividades ao do Plano */
+.gerar-atividades .ga-form {
+  gap: .5rem;
+}
+
+/* Grid 2 colunas reutilizável */
+.page--resumo .pa-grid-2,
+.gerar-atividades .pa-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .page--resumo .pa-grid-2,
+  .gerar-atividades .pa-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ===== Tipografia e espaçamento das labels ===== */
+.gerar-atividades .form-label,
+.page--resumo .form-label {
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: block;
+  color: #1F2937; /* var(--pa-text) equivalente */
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+}
+
+/* ===== Inputs / Textareas ===== */
+.gerar-atividades .form-input,
+.page--resumo .form-input {
+  font-size: 16px;
+  padding: 14px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb; /* var(--pa-border) */
+  background: #fff;
+  transition: border .2s, background .2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.gerar-atividades .form-input--error,
+.page--resumo .form-input--error { border-color: #ef4444; }
+
+.gerar-atividades .form-textarea,
+.page--resumo .form-textarea {
+  min-height: 120px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  resize: vertical;
+  background: #fff;
+}
+
+/* ===== Mensagens de erro ===== */
+.gerar-atividades .error-message,
+.page--resumo .error-message {
+  color: #ef4444;
+  margin-top: 4px;
+  font-size: 13px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ===== React-Select (prefixo react-select) ===== */
+.gerar-atividades .react-select__control,
+.page--resumo .react-select__control {
+  min-height: 48px;
+  border-radius: 10px;
+  border-width: 1.5px;
+  border-color: #e5e7eb;
+  box-shadow: none;
+}
+
+/* Fix de altura para selects de 1 linha (classe "altura-fixa") */
+.gerar-atividades .altura-fixa .react-select__control,
+.page--resumo .altura-fixa .react-select__control {
+  height: 48px !important;
+  padding: 0 !important;
+}
+
+/* Fix de altura para inputs normais (classe "altura-fixa") */
+.gerar-atividades .altura-fixa.form-input,
+.page--resumo .altura-fixa.form-input {
+  height: 48px !important;
+  min-height: 48px !important;
+}
+.gerar-atividades .altura-fixa .react-select__value-container,
+.page--resumo .altura-fixa .react-select__value-container {
+  min-height: 48px !important;
+  height: 48px !important;
+  padding: 0 14px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.gerar-atividades .altura-fixa .react-select__indicators,
+.page--resumo .altura-fixa .react-select__indicators { height: 48px !important; }
+.gerar-atividades .altura-fixa .react-select__input-container,
+.page--resumo .altura-fixa .react-select__input-container { margin: 0 !important; padding: 0 !important; }
+.gerar-atividades .altura-fixa .react-select__placeholder,
+.page--resumo .altura-fixa .react-select__placeholder,
+.gerar-atividades .altura-fixa .react-select__single-value,
+.page--resumo .altura-fixa .react-select__single-value {
+  margin: 0 !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+/* Multi-select (chips): altura mínima 48px quando vazio; expande com conteúdo */
+.gerar-atividades .rs-multi .react-select__control,
+.page--resumo .rs-multi .react-select__control {
+  min-height: 48px !important;
+  padding: 0 !important;
+}
+.gerar-atividades .rs-multi .react-select__value-container,
+.page--resumo .rs-multi .react-select__value-container {
+  min-height: 48px !important;
+  padding: 0 14px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.gerar-atividades .rs-multi .react-select__placeholder,
+.page--resumo .rs-multi .react-select__placeholder {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+.gerar-atividades .react-select__control--is-focused,
+.page--resumo .react-select__control--is-focused {
+  box-shadow: 0 0 0 2px rgba(96, 152, 248, .27);
+}
+.gerar-atividades .react-select.has-error .react-select__control,
+.page--resumo .react-select.has-error .react-select__control {
+  border-color: #ef4444 !important;
+}
+.gerar-atividades .altura-fixa .react-select__value-container,
+.page--resumo .altura-fixa .react-select__value-container { min-height: 48px; }
+
+/* ===== Breakpoints: Tablet e Mobile ===== */
+@media (max-width: 1024px) { /* Tablet */
+  .gerar-atividades .form-label,
+  .page--resumo .form-label { font-size: .95rem; }
+}
+
+@media (max-width: 640px) { /* Mobile */
+  .gerar-atividades .form-label,
+  .page--resumo .form-label { font-size: .9rem; }
+}
+
+@media (max-width: 360px) { /* Mobile muito pequeno */
+  .gerar-atividades .form-input,
+  .page--resumo .form-input,
+  .gerar-atividades .react-select__control,
+  .page--resumo .react-select__control { min-height: 48px; height: 48px; }
+  .gerar-atividades .altura-fixa .react-select__value-container,
+  .page--resumo .altura-fixa .react-select__value-container { min-height: 48px; height: 48px; }
+  .gerar-atividades .altura-fixa .react-select__indicators,
+  .page--resumo .altura-fixa .react-select__indicators { height: 48px; }
+}

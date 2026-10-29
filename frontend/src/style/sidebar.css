@@ -1,0 +1,254 @@
+/* Sidebar – Desktop only
+   Breakpoints oficiais:
+   - Mobile:  max-width: 640px   → oculto
+   - Tablet:  641–1024px         → oculto
+   - Desktop: min-width: 1025px  → visível
+*/
+
+/* === Tokens === */
+:root {
+  --sidebar-highlight: #F69543;
+  --sidebar-bg: #FFFFFF;
+  --sidebar-hover: #FFF5E7;
+  --sidebar-border: #E5E7EB;
+  --sidebar-text: #6B7280;
+  --sidebar-text-active: #021D40;
+  --app-orange: #F69543;
+  --app-blue: #021D40;
+
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 80px;
+
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================
+   Base do sidebar (pensado para desktop)
+   ========================================= */
+.sidebar {
+  background: var(--sidebar-bg);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  z-index: 900;
+  position: fixed;
+  top: var(--header-height, 56px);                 /* abaixo do header fixo */
+  left: 0;
+  width: var(--sidebar-width);
+  height: calc(100svh - var(--header-height, 56px));
+  height: calc(100dvh - var(--header-height, 56px));
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s cubic-bezier(.4,0,.2,1);
+  border-right: 1px solid var(--sidebar-border);
+  overflow: hidden;          /* sem scroll na casca */
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar--collapsed { width: var(--sidebar-collapsed-width); }
+
+/* Conteúdo interno */
+.sidebar__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar__nav {
+  flex: 1;
+  padding: 1rem 0;
+  overflow: hidden; /* scroll só na lista */
+}
+
+/* Logo (opcional) */
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  border-bottom: 1px solid var(--sidebar-border);
+  padding: 1rem;
+}
+.sidebar__logo-img { height: 5rem; width: auto; object-fit: contain; }
+
+/* Menu */
+.sidebar__menu {
+  flex: 1;
+  margin-top: 1.5rem;
+  padding: 0 0.5rem;
+  list-style: none;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* Item */
+.sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 0.375rem;
+  color: var(--sidebar-text);
+  text-decoration: none;
+  border-radius: 0.75rem;
+  background: transparent;
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+  font-weight: 500;
+  position: relative;
+}
+
+.sidebar__item:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-text-active);
+  transform: translateX(4px);
+}
+
+.sidebar__item:hover .sidebar__item-icon { color: var(--sidebar-highlight); }
+
+.sidebar__item--active {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-text-active);
+  font-weight: 600;
+}
+
+.sidebar__item--active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 4px; height: 60%;
+  background: var(--sidebar-highlight);
+  border-radius: 0 2px 2px 0;
+}
+
+.sidebar__item--active .sidebar__item-icon { color: var(--sidebar-highlight); }
+
+.sidebar__item--disabled { color: #9CA3AF; cursor: not-allowed; }
+.sidebar__item--disabled:hover {
+  background: transparent;
+  transform: none;
+  color: #9CA3AF;
+}
+.sidebar__item--disabled .sidebar__item-icon { color: #9CA3AF; }
+
+.sidebar__item-icon { width: 20px; height: 20px; flex-shrink: 0; color: inherit; }
+
+.sidebar__item-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: inherit;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__lock-icon { margin-left: auto; color: #9CA3AF; }
+
+.sidebar--collapsed .sidebar__item-label { display: none; }
+
+/* Toggle (rodapé do sidebar) */
+.sidebar__toggle-container {
+  padding: 0.5rem 1rem 1rem;
+  flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  border-top: 1px solid var(--sidebar-border);
+  background: var(--sidebar-bg);
+  min-height: 60px;
+}
+
+.sidebar__toggle-btn {
+  width: auto;
+  background: var(--sidebar-bg);
+  border: 2px solid var(--app-orange);
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  color: var(--app-orange);
+  transition: all .15s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(246,149,67,.15);
+  min-height: 44px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.sidebar__toggle-btn:hover {
+  background: var(--app-orange);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(246,149,67,.25);
+  border-color: var(--app-orange);
+}
+
+.sidebar__toggle-btn:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(246,149,67,.15); }
+
+.sidebar__toggle-btn:focus-visible { outline: 2px solid var(--app-orange); outline-offset: 2px; }
+
+.toggle-text { white-space: nowrap; font-weight: 600; color: inherit; }
+
+.toggle-icon {
+  transition: transform .15s cubic-bezier(.4,0,.2,1);
+  stroke-width: 2.5;
+  color: var(--app-orange);
+}
+.toggle-icon.collapsed { transform: rotate(180deg); }
+
+.sidebar--collapsed .sidebar__toggle-container { justify-content: center; padding: 0.75rem 0.5rem; }
+.sidebar--collapsed .sidebar__toggle-btn {
+  padding: 0.75rem;
+  border-radius: 50%;
+  width: 44px; height: 44px;
+  justify-content: center;
+  border: 2px solid var(--app-orange);
+  background: var(--sidebar-bg);
+  color: var(--app-orange);
+  box-shadow: 0 2px 6px rgba(246,149,67,.2);
+}
+.sidebar--collapsed .sidebar__toggle-btn:hover {
+  background: var(--app-orange);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(246,149,67,.3);
+}
+
+/* =========================================
+   Responsividade: ocultar fora do desktop
+   ========================================= */
+
+/* Mobile + Tablet (≤ 1024px): oculto */
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none !important;
+  }
+}
+
+/* Desktop (≥ 1025px): visível (já é o padrão) */
+@media (min-width: 1025px) {
+  .sidebar { display: flex; }
+}
+
+/* Preferências do usuário */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar, .sidebar__item, .sidebar__toggle-btn, .toggle-icon {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Displays de alta densidade */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .sidebar { border-width: .5px; }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+  .sidebar__item-icon { stroke-width: 1.5; }
+}

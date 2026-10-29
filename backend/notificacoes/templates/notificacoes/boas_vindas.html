@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bem-vindo(a)</title>
+</head>
+<body style="margin:0;background:#f6f9fc;">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+    <tr>
+        <td align="center" style="padding:24px 12px;">
+            <!-- Card -->
+            <table role="presentation" width="600" cellspacing="0" cellpadding="0"
+                   style="width:600px;max-width:600px;background:#ffffff;border:1px solid #e6ebf1;border-radius:10px;overflow:hidden;">
+                <!-- Header (primária) COM BANNER DENTRO -->
+                <tr>
+                    <td style="background: {{ PRIMARY }}; padding:16px 20px; text-align:left;">
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
+                            <!-- linha do logo + título -->
+                            <tr>
+                                <td style="width:56px; vertical-align:top;">
+                                    {% if has_logo %}
+                                    <img src="cid:logo" alt="Logo" width="40" height="40" style="display:block;border-radius:6px;">
+                                    {% endif %}
+                                </td>
+                                <td style="text-align:left;">
+                                    <div style="font:600 18px/1.2 Arial,Helvetica,sans-serif;color:#ffffff;">
+                                        Bem-vindo(a), {{ nome }}!
+                                    </div>
+                                    <div style="font:12px Arial,Helvetica,sans-serif;color:#cfe3ff;opacity:.9;">
+                                        Cadastro concluído com sucesso
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {% if has_banner %}
+                            <!-- linha do banner DENTRO da faixa azul -->
+                            <tr>
+                                <td colspan="2" style="padding-top:12px; text-align:center;">
+                                    <img
+                                            src="cid:hero"
+                                            alt="Banner"
+                                            width="560"
+                                            style="display:block;width:100%;max-width:560px;height:auto;border:0;border-radius:8px;"
+                                    >
+                                </td>
+                            </tr>
+                            {% endif %}
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Corpo -->
+                <tr>
+                    <td style="padding:20px 24px 8px;font:14px/1.6 Arial,Helvetica,sans-serif;color:#334155;">
+                        <p style="margin:0 0 12px;">Seu acesso foi criado. Aqui estão os detalhes:</p>
+
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0"
+                               style="margin:8px 0 14px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;">
+                            <tr>
+                                <td style="padding:12px 16px;font:14px Arial,Helvetica,sans-serif;color:#0f172a;">
+                                    <strong>E-mail:</strong>
+                                    <a href="mailto:{{ email_destino }}" style="color:{{ PRIMARY }};text-decoration:none;">
+                                        {{ email_destino }}
+                                    </a><br>
+                                    {% if senha %}
+                                    <strong>Senha:</strong>
+                                    <span style="font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;">
+                        {{ senha }}
+                      </span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="margin:0 0 16px;color:#475569;">
+                            Recomendamos alterar sua senha após o primeiro acesso.
+                        </p>
+                    </td>
+                </tr>
+
+                {% if link_acesso %}
+                <tr>
+                    <td align="center" style="padding:0 24px 24px;">
+                        <a href="{{ link_acesso }}"
+                           style="display:inline-block;background:{{ ACCENT }};color:#ffffff;text-decoration:none;
+                        font:600 14px Arial,Helvetica,sans-serif;border-radius:8px;padding:12px 20px;">
+                            Acessar a plataforma
+                        </a>
+                    </td>
+                </tr>
+                {% endif %}
+
+                <tr>
+                    <td style="padding:0 24px 22px;font:12px/1.5 Arial,Helvetica,sans-serif;color:#64748b;">
+                        <p style="margin:0;">Se você não solicitou este cadastro, ignore este e-mail.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Rodapé -->
+            <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;">
+                <tr>
+                    <td style="text-align:center;padding:12px 0 0;font:12px Arial,Helvetica,sans-serif;color:#94a3b8;">
+                        © {{ ano }} Sua Empresa · Todos os direitos reservados
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

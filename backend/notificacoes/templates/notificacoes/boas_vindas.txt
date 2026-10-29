@@ -1,0 +1,12 @@
+Bem-vindo(a), {{ nome }}!
+
+Seu cadastro foi realizado com sucesso.
+
+E-mail: {{ email_destino }}
+{% if senha %}Senha: {{ senha }}
+Recomendamos alterar sua senha após o primeiro acesso.{% endif %}
+
+{% if link_acesso %}Acesse: {{ link_acesso }}{% endif %}
+
+Se você não solicitou este cadastro, ignore este e-mail.
+© {{ ano }} Sua Empresa

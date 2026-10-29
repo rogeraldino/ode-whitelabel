@@ -1,0 +1,52 @@
+[
+  {
+    "tipo": "Ativa",
+    "nome": "Discussões em grupo",
+    "definicao": "Os alunos se reúnem para discutir um tópico específico, compartilhando suas ideias, fazendo perguntas e construindo conhecimento coletivamente."
+  },
+  {
+    "tipo": "Ativa",
+    "nome": "Projetos em grupo",
+    "definicao": "Os alunos trabalham juntos em projetos que exigem pesquisa, resolução de problemas e criação de produtos ou apresentações. Cada membro do grupo contribui com suas habilidades e conhecimentos para alcançar um objetivo comum."
+  },
+  {
+    "tipo": "Ativa",
+    "nome": "Aprendizagem em pares",
+    "definicao": "Os alunos são organizados em pares, onde um aluno mais experiente pode ajudar e orientar outro aluno com menos conhecimento sobre um determinado assunto. Essa abordagem permite que os alunos ensinem e aprendam uns com os outros."
+  },
+  {
+    "tipo": "Ativa",
+    "nome": "Aprendizagem baseada em equipes",
+    "definicao": "Os alunos são divididos em equipes de trabalho que têm responsabilidades compartilhadas. Cada membro da equipe desempenha um papel específico e contribui para o sucesso do grupo."
+  },
+  {
+    "tipo": "Ativa",
+    "nome": "Construção ativa do conhecimento",
+    "definicao": "Os alunos participam ativamente do processo de aprendizagem, promovendo a troca de ideias, discussões e resolução de problemas. Isso os ajuda a construir um conhecimento mais significativo, uma vez que estão envolvidos ativamente na sua construção."
+  },
+  {
+    "tipo": "Ativa",
+    "nome": "Aprendizagem colaborativa",
+    "definicao": "Os alunos retêm mais ativamente o conteúdo quando se envolvem ativamente no processo de ensino e aprendizagem, interagindo com seus colegas de classe. Através da colaboração, eles podem trocar diferentes perspectivas, explorar pontos de vista diversos e construir um conhecimento mais completo e significativo."
+  },
+  {
+    "tipo": "Ativa",
+    "nome": "Sala de aula invertida",
+    "definicao": "Os alunos contam com o auxílio da tecnologia, transformando qualquer ambiente em um espaço dedicado ao estudo. Dessa forma, o tempo da aula pode ser usado para discussões e debates sobre o tema, em vez de somente a transmissão do conteúdo."
+  },
+  {
+    "tipo": "Expositiva",
+    "nome": "Aula Expositiva Clássica",
+    "definicao": "O professor expõe o conteúdo de forma expositiva, e os alunos são principalmente ouvintes."
+  },
+  {
+    "tipo": "Expositiva",
+    "nome": "Aula Expositiva Dialogada",
+    "definicao": "O professor apresenta o conteúdo, mas também estimula a participação dos alunos por meio de perguntas e discussões, buscando uma maior interação."
+  },
+  {
+    "tipo": "Expositiva",
+    "nome": "Aula Expositiva Demonstrativa",
+    "definicao": "Exposição oral em conjunto com demonstrações práticas, recursos visuais ou outros materiais para ilustrar o conteúdo."
+  }
+]

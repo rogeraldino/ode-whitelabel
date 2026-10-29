@@ -1,0 +1,115 @@
+/* ========================== */
+/* CSS Global Responsivo - Atualização Final */
+:root {
+  --gutter: 1rem;
+  --sidebar-width: 240px;
+}
+
+/* Reset e container full width */
+html, body, #root, #app {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+  background-color: #F8F9FA !important;
+}
+
+/* Forçar layout flex no root */
+#root, #app {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+
+/* Sidebar e conteúdo principal */
+.sidebar {
+  flex: 0 0 var(--sidebar-width) !important;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.sidebar.hidden {
+  display: none !important;
+}
+.main-content {
+  flex: 1 1 auto !important;
+  padding: var(--gutter) !important;
+  background: #F8F9FA;
+  overflow-y: auto;
+}
+
+/* Padding interno para outras áreas */
+.page-content, .container, .content {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  padding: var(--gutter) !important;
+  box-sizing: border-box;
+  background: #F8F9FA;
+}
+
+/* Responsive padding adjustments */
+@media (min-width: 640px) {
+  .main-content, .page-content, .container, .content {
+    padding: calc(var(--gutter) * 1.5) !important;
+  }
+}
+@media (min-width: 1024px) {
+  .main-content, .page-content, .container, .content {
+    padding: calc(var(--gutter) * 2) !important;
+  }
+}
+
+/* Logos e animações */
+.logo {
+  height: auto;
+  max-height: 6em;
+  width: auto;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover { filter: drop-shadow(0 0 2em #646cffaa); }
+.logo.react:hover { filter: drop-shadow(0 0 2em #61dafbaa); }
+
+@keyframes logo-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo { animation: logo-spin infinite 20s linear; }
+}
+
+/* Cartões */
+.card {
+  padding: 2em;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: none;
+}
+
+/* Links de documentação */
+.read-the-docs { color: #888; text-decoration: none; }
+.read-the-docs:hover { text-decoration: underline; }
+
+/* Elementos fluidos */
+img, video { max-width: 100%; height: auto; }
+
+/* Tipografia responsiva */
+.text-xl { font-size: 1.25rem; font-weight: 700; }
+.text-lg { font-size: 1.125rem; font-weight: 600; }
+.text-sm { font-size: 0.875rem; }
+.font-bold { font-weight: 700; }
+.font-medium { font-weight: 500; }
+
+/* Utilitários */
+.w-full { width: 100%; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap { gap: var(--gutter); }
+.hidden { display: none !important; }
+
+/* Remova margens laterais inesperadas */
+* { margin: 0; padding: 0; }
+
+/* ========================== */

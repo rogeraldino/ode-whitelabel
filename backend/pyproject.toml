@@ -1,0 +1,54 @@
+# pyproject.toml
+[project]
+name = "education_backend"
+version = "0.1.0"
+dependencies = [
+    "Django",
+    "djangorestframework",
+    "psycopg2-binary",
+    "python-dotenv",
+    "django-cors-headers",
+    "djangorestframework-simplejwt",
+    "annotated-types", # Pode ser uma dependência direta, ou transitiva do pydantic
+    "anyio", # Pode ser uma dependência direta, ou transitiva do httpx
+    "asgiref", # Dependência do Django
+    "certifi", # Dependência comum
+    "chardet", # Dependência comum
+    "colorama", # Dependência comum
+    "colorlog", # Dependência comum
+    "distro", # Dependência comum
+    "gunicorn",
+    "h11", # Dependência do httpx
+    "httpcore", # Dependência do httpx
+    "httpx", # Cliente HTTP, se você o usa diretamente
+    "idna", # Dependência comum
+    "jiter", # Dependência do pydantic
+    "numpy", # Se você usa numpy diretamente
+    "openai", # Se você usa openai diretamente
+    "opencv-python", # Se você usa opencv-python diretamente
+    "pillow", # Se você usa pillow diretamente
+    "pydantic", # Se você usa pydantic diretamente
+    "pydantic_core", # Dependência do pydantic
+    "PyJWT", # Dependência do djangorestframework-simplejwt
+    "pyzbar", # Se você usa pyzbar diretamente
+    "qrcode", # Se você usa qrcode diretamente
+    "reportlab", # Se você usa reportlab diretamente
+    "python-docx", # Geração de arquivos DOCX
+    "sniffio", # Dependência do httpx
+    "sqlparse", # Dependência do Django
+    "tqdm", # Se você usa tqdm diretamente
+    "typing-inspection", # Dependência do pydantic
+    "typing_extensions", # Dependência comum
+    "tzdata", # Dependência do Django
+    "python-logging-loki", # Handler para envio dos logs ao Loki
+    "python-dateutil>=2.9.0.post0",
+    "uvicorn[standard]",
+    "celery>=5.3,<6",
+    "redis>=5,<6",
+    "flower>=2.0",               # dashboard p/ Celery (monitoramento)
+
+]
+
+[tool.uv]
+# Opcional: define o interpretador Python a ser usado
+# python = "3.13" # Se você souber a versão específica do Python no seu WSL, pode descomentar
